@@ -9,7 +9,7 @@ public class Handler {
 
     public static void main(String[] args) {
 
-        MyCSVParser.parseToList(DIR);
+        new MyCSVParser().parseToList(DIR);
         MailReader mailReader = new MailReader();
         try {
             mailReader.readEmails();

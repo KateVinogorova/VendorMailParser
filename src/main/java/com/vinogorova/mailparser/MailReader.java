@@ -9,7 +9,6 @@ import java.util.Properties;
 
 public class MailReader {
 
-
     public void readEmails() throws IOException, MessagingException {
         Properties props = new Properties();
         props.load(new FileInputStream("src/main/resources/config.properties"));
@@ -33,11 +32,11 @@ public class MailReader {
                         String fileName = bp.getFileName();
                         if (fileName.endsWith(".csv")) {
                             bp.saveFile("storage/" + fileName);
+                            m.setFlag(Flags.Flag.SEEN, true);
                         }
                     }
                 }
             }
-            System.out.println(m.getSubject());
         }
         inbox.close();
         store.close();

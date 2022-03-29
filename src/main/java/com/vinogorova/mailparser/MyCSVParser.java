@@ -10,9 +10,9 @@ import java.util.List;
 public class MyCSVParser {
     private static List<PriceItem> priceItems;
 
-    public static void parseToList(File file) {
+    public List<PriceItem> parseToList(File file) {
         try {
-            priceItems = new CsvToBeanBuilder<PriceItem>(new FileReader(file))
+            return priceItems = new CsvToBeanBuilder<PriceItem>(new FileReader(file))
                     .withSeparator(';')
                     .withIgnoreQuotations(true)
                     .withSkipLines(1)
@@ -22,6 +22,7 @@ public class MyCSVParser {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        return priceItems;
     }
 
     public List<PriceItem> getPriceAsList() {
